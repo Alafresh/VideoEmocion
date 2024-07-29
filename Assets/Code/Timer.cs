@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,10 @@ public class Timer : MonoBehaviour
     public Text timerText;
     private float startTime;
     private float countDownTime = 270f; // 4 minutos y 30 segundos
+    [SerializeField] GameObject nick;
+    [SerializeField] GameObject nickViejo;
+    [SerializeField] GameObject final;
+    [SerializeField] GameObject mambo;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +34,23 @@ public class Timer : MonoBehaviour
             int minutes = Mathf.FloorToInt(timeLeft / 60);
             int seconds = Mathf.FloorToInt(timeLeft % 60);
             timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+            if (timeLeft <= 142)
+            {
+                nick.SetActive(true);
+            }
+            if (timeLeft <= 104)
+            {
+                nickViejo.SetActive(true);
+            }
+            if (timeLeft <= 52)
+            {
+                final.SetActive(true);
+            }
+            if (timeLeft <= 16)
+            {
+                mambo.SetActive(true);
+            }
         }
     }
 }
